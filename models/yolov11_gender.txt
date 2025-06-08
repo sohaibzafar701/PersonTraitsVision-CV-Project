@@ -1,0 +1,3 @@
+https://drive.google.com/file/d/13LAW4-biERBr7Ku5GEVgV6Q7MuJ8bSsD/view?usp=sharing
+
+download the model and name it as "yolov11_gender.pt" and place it in models folder

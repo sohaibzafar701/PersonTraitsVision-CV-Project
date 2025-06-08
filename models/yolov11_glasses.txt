@@ -1,0 +1,3 @@
+https://drive.google.com/file/d/1CL5MHHE5qs-Wi_0g6xqujvE-0cyDDl4R/view?usp=sharing
+
+download the model and name it as "yolov11_glasses.pt" and place it in models folder
