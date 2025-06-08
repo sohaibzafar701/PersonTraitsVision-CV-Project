@@ -1,0 +1,131 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender, Glasses, and Shirt Color Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .upload-form {
+            margin: 20px 0;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .error {
+            color: red;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gender, Glasses, and Shirt Color Detection</h1>
+    <div class="upload-form">
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Upload and Analyze</button>
+        </form>
+    </div>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    {% if output_image %}
+        <div class="result">
+            <h2>Results</h2>
+            <p><strong>Gender:</strong> {{ gender }}</p>
+            <p><strong>Glasses:</strong> {{ glasses }}</p>
+            <p><strong>Shirt Color:</strong> {{ shirt_color }}</p>
+            <img src="{{ url_for('serve_output', filename=output_image) }}" alt="Detection Result">
+        </div>
+    {% endif %}
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender, Glasses, and Shirt Color Detection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom gradient background */
+        body {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            min-height: 100vh;
+        }
+        /* Hover effect for button */
+        .upload-btn:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+        /* Image shadow and hover zoom */
+        .result-img {
+            transition: transform 0.3s ease;
+        }
+        .result-img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4 sm:p-6">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 sm:p-8">
+        <h1 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-6">
+            Gender, Glasses, and Shirt Color Detection
+        </h1>
+        <div class="upload-form mb-8">
+            <form method="post" enctype="multipart/form-data" class="flex flex-col items-center space-y-4">
+                <label for="file" class="text-gray-600 text-sm font-medium">
+                    Upload an image to analyze
+                </label>
+                <input type="file" name="file" id="file" accept="image/*" required
+                       class="block w-full text-sm text-gray-500
+                              file:mr-4 file:py-2 file:px-4
+                              file:rounded-md file:border-0
+                              file:text-sm file:font-semibold
+                              file:bg-blue-50 file:text-blue-700
+                              hover:file:bg-blue-100">
+                <button type="submit"
+                        class="upload-btn bg-blue-600 text-white font-semibold py-2 px-6 rounded-md
+                               transition duration-300 ease-in-out transform">
+                    Upload and Analyze
+                </button>
+            </form>
+        </div>
+        {% if error %}
+            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-md mb-6">
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+        {% if output_image %}
+            <div class="result bg-gray-50 p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Results</h2>
+                <div class="space-y-2 text-gray-700">
+                    <p><strong>Gender:</strong> {{ gender }}</p>
+                    <p><strong>Glasses:</strong> {{ glasses }}</p>
+                    <p><strong>Shirt Color:</strong> {{ shirt_color }}</p>
+                </div>
+                <img src="{{ url_for('serve_output', filename=output_image) }}"
+                     alt="Detection Result"
+                     class="result-img mt-6 rounded-lg shadow-lg max-w-full h-auto">
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
